@@ -1,0 +1,27 @@
+@import "./colors";
+
+.menuOption {
+  background-color: $ldblue;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  padding-left: 2px;
+  cursor: pointer;
+  :hover {
+    background-color: $dblue;
+    opacity: 0.9;
+  }
+  .menuOption__icon {
+    padding: 10px;
+    font-size: 15px !important;
+  }
+  .menuOption__channel {
+    padding: 10px 0;
+  }
+  .menuOption__hash {
+    padding: 10px;
+  }
+  h3 {
+    font-weight: 400;
+  }
+}
