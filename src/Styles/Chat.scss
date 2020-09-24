@@ -5,6 +5,7 @@
   flex-grow: 1;
   overflow-y: scroll;
   padding-bottom: 150px;
+  background-color: $white;
   .chat__headerL {
     .chat__channelName {
       text-transform: lowercase;

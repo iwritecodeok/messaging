@@ -1,0 +1,26 @@
+@import "./colors";
+
+.message {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+
+  img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    border-radius: 99px;
+  }
+  .message__info {
+    padding-left: 10px;
+  }
+  .message__timestamp {
+    color: gray;
+    font-weight: 400;
+    font-size: 13px;
+    margin-left: 10px;
+  }
+  h4 {
+    font-weight: 500;
+  }
+}

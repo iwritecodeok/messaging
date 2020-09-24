@@ -15,8 +15,10 @@ import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 import AddRoundedIcon from "@material-ui/icons/AddRounded";
 import MenuOption from "./MenuOptions";
 import db from "../firebase";
+import { useStateValue } from "../Utils/StateProvider";
 
 function MenuBar() {
+  const [{ user }] = useStateValue();
   const [channels, setChannels] = useState([]);
   useEffect(() => {
     db.collection("room").onSnapshot((snapshot) =>
@@ -33,10 +35,10 @@ function MenuBar() {
       {/* menubar__header */}
       <div className="menubar__header">
         <div className="menubar__info">
-          <h2>Developer chat</h2>
+          <h2>Sync</h2>
           <h3>
             <FiberManualRecordIcon className="statusIcon" />
-            justin nichols
+            hello, {user?.displayName}
           </h3>
         </div>
         <CreateRoundedIcon className="createIcon" />
