@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Styles/MenuBar.scss";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import CreateRoundedIcon from "@material-ui/icons/CreateRounded";
@@ -14,8 +14,20 @@ import ExpandLessRoundedIcon from "@material-ui/icons/ExpandLessRounded";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 import AddRoundedIcon from "@material-ui/icons/AddRounded";
 import MenuOption from "./MenuOptions";
+import db from "../firebase";
 
 function MenuBar() {
+  const [channels, setChannels] = useState([]);
+  useEffect(() => {
+    db.collection("room").onSnapshot((snapshot) =>
+      setChannels(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          name: doc.data().name,
+        }))
+      )
+    );
+  }, []);
   return (
     <div className="menubar">
       {/* menubar__header */}
@@ -42,8 +54,11 @@ function MenuBar() {
       <MenuOption Icon={ExpandLessRoundedIcon} title="show less" />
       <hr />
       <MenuOption Icon={ExpandMoreRoundedIcon} title="Channels" />
-      <MenuOption Icon={AddRoundedIcon} title="Add Channels" />
+      <MenuOption Icon={AddRoundedIcon} title="Add Channels" addChannelOption />
       {/* connect to db and list all active channels */}
+      {channels.map((channel) => (
+        <MenuOption title={channel.name} id={channel.id} />
+      ))}
     </div>
   );
 }

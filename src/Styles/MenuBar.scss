@@ -4,7 +4,14 @@
   background-color: $dblue;
   border-top: 1px solid $ldblue;
   max-width: 260px;
+  height: 100%;
+  flex: 0.3;
   color: $white;
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid $dblue;
+  }
 
   .menubar__header {
     display: flex;
